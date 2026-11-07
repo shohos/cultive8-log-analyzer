@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+.pytest_cache/
+data/*
+!data/.gitkeep
+runtime/*
+!runtime/.gitkeep
+models/*
+!models/.gitkeep
+*.log
+!samples/*.log
+*.zip
+*.mp4
+docs/media/
+.env

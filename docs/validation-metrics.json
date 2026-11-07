@@ -1,0 +1,17 @@
+{
+  "job": "15390225465546729b1349129433a08f",
+  "source_sha256": "2f81f924c06fe8ed848cd51df31c86c914a514a3233c4f11eb2986dbc3d8bd45",
+  "lines": 258,
+  "duplicates": 1,
+  "chunk_calls": 35,
+  "review_calls_including_revisions": 12,
+  "total_saved_calls": 47,
+  "findings": 6,
+  "max_input_tokens": 1641,
+  "max_output_tokens": 340,
+  "max_actual_total_tokens": 1962,
+  "sum_model_seconds": 759.72,
+  "peak_sampled_rss_mib": 2123.6,
+  "retries": 0,
+  "exact_source_coverage": true
+}

@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#111b19" />
+    <title>Cultive8 — Log intelligence</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <script src="/static/app.js" defer></script>
+  </head>
+  <body>
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="Cultive8 home"
+        ><span class="brand-mark">c8</span>cultive8<span class="brand-dot"
+          >.</span
+        ></a
+      >
+      <div class="workspace">SECURITY WORKSPACE</div>
+      <nav>
+        <a class="nav-item active" href="#main"
+          ><span>▧</span> Log analyzer <span class="nav-arrow">↗</span></a
+        ><a class="nav-item" href="#history"><span>◷</span> Analysis history</a
+        ><a class="nav-item" href="/openapi.json" target="_blank" rel="noopener"
+          ><span>⌘</span> API reference</a
+        >
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="shield">◇</div>
+        <strong>Your logs stay yours.</strong>
+        <p>Local inference. No cloud APIs.<br />Works offline after setup.</p>
+        <div class="local-label"><i></i> LOCAL ENVIRONMENT</div>
+      </div>
+    </aside>
+    <div class="shell">
+      <header>
+        <div class="breadcrumbs">
+          Workspace <span>/</span> <strong>Log intelligence</strong>
+        </div>
+        <div class="header-right">
+          <span class="connection" id="connection">Checking model…</span
+          ><span class="avatar">C8</span>
+        </div>
+      </header>
+      <main id="main">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">OBSERVE. CONNECT. INVESTIGATE.</div>
+            <h1>Security starts with a signal.</h1>
+            <p>
+              Turn server logs into a connected, evidence-backed security
+              report.
+            </p>
+          </div>
+          <div class="private-badge">◇ &nbsp; Private by design</div>
+        </div>
+        <div class="alert" id="alert" role="alert" hidden></div>
+        <section class="overview" aria-label="Analysis overview">
+          <article>
+            <div class="stat-label">LOG ENTRIES <span>▤</span></div>
+            <div class="stat-value" id="entries">—</div>
+            <p id="entry-sub">Upload a file to get started</p>
+          </article>
+          <article>
+            <div class="stat-label">SECURITY FINDINGS <span>◎</span></div>
+            <div class="stat-value" id="finding-count">—</div>
+            <p id="finding-sub">Evidence, with context</p>
+          </article>
+          <article>
+            <div class="stat-label">CROSS-CHUNK LINKS <span>⇄</span></div>
+            <div class="stat-value" id="links">—</div>
+            <p>Connected across the log</p>
+          </article>
+          <article>
+            <div class="stat-label">MEMORY IN USE <span>◴</span></div>
+            <div class="stat-value" id="memory">—</div>
+            <p id="memory-sub">4 GB resource budget</p>
+          </article>
+        </section>
+        <div class="work-grid">
+          <section class="panel source-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="step">01</span>
+                <h2>Your log source</h2>
+              </div>
+              <span class="subtle">UTF-8 · Up to 5 MB</span>
+            </div>
+            <label class="drop-zone" id="drop-zone"
+              ><input id="file" type="file" accept=".log,.txt" /><span
+                class="upload-icon"
+                >↥</span
+              ><strong>Drop your server log here</strong
+              ><span>or <u>browse files</u> to choose a .log or .txt</span
+              ><small
+                >Processed on this machine. Never sent to the cloud.</small
+              ></label
+            >
+            <div class="sample-row">
+              <span>Try the assessment dataset</span
+              ><button id="sample" class="text-button">
+                Load supplied log <span>↗</span>
+              </button>
+            </div>
+            <div id="selected-file" class="selected-file" hidden>
+              <span class="file-icon">▤</span>
+              <div>
+                <strong id="file-name"></strong><small id="file-meta"></small>
+              </div>
+              <span class="file-check">✓</span>
+            </div>
+            <div class="source-footer">
+              <span class="subtle">One model call at a time.</span
+              ><button class="primary" id="start" disabled>
+                Start analysis <span>→</span></button
+              ><button class="secondary" id="pause" hidden>Pause</button>
+            </div>
+          </section>
+          <section class="panel runtime-panel">
+            <div class="panel-heading">
+              <div>
+                <span class="step">02</span>
+                <h2>Analysis pipeline</h2>
+              </div>
+              <span class="status-pill" id="job-status">READY</span>
+            </div>
+            <ol class="pipeline">
+              <li id="stage-0">
+                <span class="stage-dot">1</span>
+                <div>
+                  <strong>Read &amp; preserve</strong>
+                  <p>Keep original entries and line numbers.</p>
+                </div>
+              </li>
+              <li id="stage-1">
+                <span class="stage-dot">2</span>
+                <div>
+                  <strong>Analyze in context</strong>
+                  <p>Token-aware chunks, persistent findings.</p>
+                </div>
+              </li>
+              <li id="stage-2">
+                <span class="stage-dot">3</span>
+                <div>
+                  <strong>Connect the evidence</strong>
+                  <p>Merge signals into one actionable report.</p>
+                </div>
+              </li>
+            </ol>
+            <div class="progress-meta">
+              <span id="progress-label">Waiting for a log file</span
+              ><strong id="progress-number">0%</strong>
+            </div>
+            <progress
+              id="progress"
+              max="100"
+              value="0"
+              aria-label="Log coverage"
+            ></progress>
+            <div class="runtime-foot">
+              <span><i></i> Qwen2.5 1.5B · CPU</span
+              ><span>2,048 tokens / call</span>
+            </div>
+          </section>
+        </div>
+        <section class="panel report-panel" id="report">
+          <div class="panel-heading">
+            <div>
+              <span class="step">03</span>
+              <h2>Investigation report</h2>
+              <span class="count-pill" id="report-count">0</span>
+            </div>
+            <a id="export" class="secondary" hidden>↓ Export JSON</a>
+          </div>
+          <div class="report-toolbar">
+            <div class="tabs" role="group" aria-label="Filter findings">
+              <button class="tab active" data-filter="All">All findings</button
+              ><button class="tab" data-filter="Critical">Critical</button
+              ><button class="tab" data-filter="High">High</button
+              ><button class="tab" data-filter="Medium">Medium</button
+              ><button class="tab" data-filter="Low">Low</button>
+            </div>
+            <span id="report-caption" class="subtle"
+              >Findings appear after cross-log review</span
+            >
+          </div>
+          <div id="findings">
+            <div class="empty">
+              <span class="empty-icon">⌕</span>
+              <h3>A clearer picture is one log away.</h3>
+              <p>
+                Start an analysis to uncover suspicious activity,<br />trace
+                related events, and inspect the evidence.
+              </p>
+              <div class="empty-tags">
+                <span>Login attempts</span><span>SQL injection</span
+                ><span>Access &amp; scanning</span>
+              </div>
+            </div>
+          </div>
+          <div class="report-note">
+            ⓘ &nbsp; Findings indicate possible threats and require
+            investigation. A failed request alone is not proof of an attack.
+          </div>
+        </section>
+        <section class="panel audit-panel">
+          <details>
+            <summary>
+              <span>Model call audit</span
+              ><span class="subtle" id="audit-sub"
+                >Token budgets, timing &amp; retries</span
+              >
+            </summary>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Call</th>
+                    <th>Stage</th>
+                    <th>Lines</th>
+                    <th>Input</th>
+                    <th>Output</th>
+                    <th>Time</th>
+                    <th>Attempts</th>
+                  </tr>
+                </thead>
+                <tbody id="calls"></tbody>
+              </table>
+            </div>
+          </details>
+        </section>
+        <section id="history" class="history">
+          <div class="section-title">
+            <h2>Recent analyses</h2>
+            <button class="text-button" id="refresh-history">Refresh ↻</button>
+          </div>
+          <div id="history-list" class="history-list">
+            <p class="subtle">Your saved analyses will appear here.</p>
+          </div>
+        </section>
+        <footer>
+          <span
+            ><strong>cultive8.</strong> &nbsp; Local security intelligence</span
+          ><span
+            >Offline capable <span class="footer-dot">·</span> Evidence
+            first</span
+          >
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+.git
+.venv
+data
+models
+runtime
+docs
+tests
+__pycache__
+.pytest_cache
+*.zip
