@@ -120,12 +120,11 @@ AI_USAGE.md        AI assistance, prompts, changes and observed mistakes
 
 ## Submission
 
-The local Git repository contains source, setup instructions, tests, `AI_USAGE.md`, and walkthrough materials. Review the code and recording before submitting it under your name. No repository is published or assessment submitted automatically. To publish your reviewed source, create a GitHub repository and push `main`; keep model binaries and the `data/` directory excluded.
+The local Git repository contains source, setup instructions, tests, `AI_USAGE.md`, and walkthrough materials. 
 
 - [AI usage record](AI_USAGE.md)
 - [Actual-run validation](docs/VALIDATION.md) and [exported sample report](docs/sample-report.json)
 - [Walkthrough script](docs/WALKTHROUGH.md)
-- Local generated video: `docs/Cultive8_Technical_Walkthrough.mp4` (2:57, explicitly AI-narrated; delivered separately from Git)
 
 The optional video can be regenerated on Windows after installing `pillow` and `imageio-ffmpeg`: `python scripts/make_walkthrough.py docs/sample-report.json`. These authoring dependencies are not required by the analyzer. The recording explains the implementation; replace it with your own presentation if the assessment expects your voice.
 
