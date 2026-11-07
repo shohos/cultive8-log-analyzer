@@ -62,5 +62,3 @@ The small model did generate incorrect prose and unsafe remediation suggestions 
 - Native runtime was tested with two inference threads on this workstation, **not** on a dedicated 2-vCPU/4-GB VM. Docker has resource limits configured but was not built or run here.
 - The OS network was not disconnected. Offline capability is supported by local-only runtime requests, vendored assets, disabled CDN documentation pages and loopback model enforcement; a physically disconnected test remains a deployment check.
 - Browser preview supports a narrow companion panel; desktop-wide viewport overrides did not reliably map to capture size. Narrow-layout rendering and functional controls were inspected; full desktop viewport coverage is not claimed.
-- The walkthrough is an explicitly labeled, synthesized technical explanation. It is not a recording of the applicant presenting their own work.
-- The generated 176.8-second MP4 decoded successfully end to end; its report-grounding slide was visually inspected.
