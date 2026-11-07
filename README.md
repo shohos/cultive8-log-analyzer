@@ -126,6 +126,4 @@ The local Git repository contains source, setup instructions, tests, `AI_USAGE.m
 - [Actual-run validation](docs/VALIDATION.md) and [exported sample report](docs/sample-report.json)
 - [Walkthrough script](docs/WALKTHROUGH.md)
 
-The optional video can be regenerated on Windows after installing `pillow` and `imageio-ffmpeg`: `python scripts/make_walkthrough.py docs/sample-report.json`. These authoring dependencies are not required by the analyzer. The recording explains the implementation; replace it with your own presentation if the assessment expects your voice.
-
 Model/runtime primary references: [Qwen model card](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF), [llama.cpp server documentation](https://github.com/ggml-org/llama.cpp/tree/master/tools/server), [pinned runtime release](https://github.com/ggml-org/llama.cpp/releases/tag/b12183).
