@@ -120,10 +120,9 @@ AI_USAGE.md        AI assistance, prompts, changes and observed mistakes
 
 ## Submission
 
-The local Git repository contains source, setup instructions, tests, `AI_USAGE.md`, and walkthrough materials. 
+The local Git repository contains source, setup instructions, tests and `AI_USAGE.md`. 
 
 - [AI usage record](AI_USAGE.md)
 - [Actual-run validation](docs/VALIDATION.md) and [exported sample report](docs/sample-report.json)
-- [Walkthrough script](docs/WALKTHROUGH.md)
 
 Model/runtime primary references: [Qwen model card](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF), [llama.cpp server documentation](https://github.com/ggml-org/llama.cpp/tree/master/tools/server), [pinned runtime release](https://github.com/ggml-org/llama.cpp/releases/tag/b12183).
